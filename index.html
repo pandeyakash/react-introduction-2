@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JSX and Babel</title>
+    <style>
+      /* Basic CSS reset for margin and padding */
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Styles for the main app container */
+      #app {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      /* Styles for the watch container */
+      .watch {
+        width: 90%;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Styles for the product image */
+      img {
+        width: 100%;
+        height: 40vh;
+        margin-bottom: 30px;
+        border-radius: 10px;
+      }
+
+      /* Styles for the product price */
+      .price {
+        font-size: 22px;
+        margin-bottom: 35px;
+      }
+
+      /* Styles for the first description paragraph */
+      .description-1 {
+        color: grey;
+        font-size: 20px;
+        line-height: 25px;
+        margin-bottom: 20px;
+      }
+
+      /* Styles for the second description paragraph */
+      .description-2 {
+        font-size: 18px;
+      }
+
+      /* Styles for the features container */
+      .features {
+        width: 90%;
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid lightgrey;
+        border-bottom: 1px solid lightgray;
+        padding-bottom: 15px;
+      }
+
+      /* Styles for the features title */
+      .features > p {
+        font-size: 18px;
+        color: rgb(190, 149, 28);
+      }
+
+      /* Styles for the features list container */
+      .features-list {
+        width: 100%;
+        display: flex;
+        margin-top: 20px;
+      }
+
+      /* Remove default list styling */
+      ul {
+        list-style-type: none;
+      }
+
+      /* Styles for the left side of the features list */
+      .features-left {
+        margin-right: 400px;
+      }
+
+      /* Styles for each feature list item */
+      .features li {
+        margin-bottom: 10px;
+        font-size: 16px;
+        color: grey;
+      }
+
+      /* Styles for the product details container */
+      .product-details {
+        width: 90%;
+      }
+
+      /* Styles for the product details title */
+      .product-details > p {
+        padding-top: 15px;
+        font-size: 18px;
+        color: rgb(190, 149, 28);
+        margin-bottom: 20px;
+      }
+
+      /* Styles for each product detail item */
+      .product-details li {
+        margin-bottom: 10px;
+        font-size: 16px;
+      }
+
+      /* Styles for the "Add to Cart" button */
+      button {
+        width: 90%;
+        height: 40px;
+        margin-top: 20px;
+        background-color: black;
+        color: white;
+        border: none;
+        font-size: 16px;
+        font-weight: 800;
+      }
+
+      /* Styles for the delivery message */
+      .delivery-message {
+        margin-top: 30px;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Root element for rendering React components -->
+    <div id="root"></div>
+    <!-- React, ReactDOM, and Babel scripts loaded from CDN -->
+    <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      /*
+       * React functional component to display watch information
+       * This component includes an image, title, price, and descriptions
+       */
+      function Watch() {
+        return (
+          <div className="watch">
+            <img
+              src="https://images.unsplash.com/photo-1490915785914-0af2806c22b6?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="Watch Image"
+            />
+            <h1>Automatic Watch</h1>
+            <p className="price">$350.00 USD</p>
+            <p className="description-1">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
+              illum corrupti sunt eveniet, maiores odio labore voluptate
+              distinctio modi expedita! Reiciendis, est voluptas odit assumenda
+              aperiam nam! Ipsum, magnam esse.
+            </p>
+            <p className="description-2">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae
+              aliquam animi quo, illo commodi laborum asperiores accusamus atque
+              doloribus molestias repellendus nostrum alias sunt harum nulla
+              impedit facere accusantium necessitatibus?
+            </p>
+          </div>
+        );
+      }
+
+      /*
+       * React functional component to display features of the product
+       * This component renders a list of features divided into two columns
+       */
+      function Features() {
+        return (
+          <div className="features">
+            <p>FEATURES</p>
+            <div className="features-list">
+              <ul className="features-left">
+                <li>Chronograph</li>
+                <li>Master Chronometer Certified</li>
+                <li>Tachymeter</li>
+              </ul>
+              <ul className="features-right">
+                <li>Anti-magnetic</li>
+                <li>Chronometer</li>
+                <li>Small seconds</li>
+              </ul>
+            </div>
+          </div>
+        );
+      }
+
+      /*
+       * React functional component to display detailed product information
+       * This component includes detailed specifications of the product
+       */
+      function ProductDetails() {
+        return (
+          <div className="product-details">
+            <p>PRODUCT DETAILS</p>
+            <ul>
+              <li>
+                <b>Between lugs:</b> 20 mm
+              </li>
+              <li>
+                <b>Bracelet:</b> leather strap
+              </li>
+              <li>
+                <b>Case:</b> Steel
+              </li>
+              <li>
+                <b>Case Diameter:</b> 42 mm
+              </li>
+              <li>
+                <b>Dial Color:</b> Black
+              </li>
+              <li>
+                <b>Crystal:</b> Domed, scratch-resistant sapphire crystal with
+                anti-reflective treatment inside
+              </li>
+              <li>
+                <b>Water resistance:</b> 5bar (50 metres / 167 feet)
+              </li>
+            </ul>
+          </div>
+        );
+      }
+
+      /*
+       * Main React component that serves as the entry point of the application
+       * This component renders all the other components and provides a button to add the product to the cart
+       */
+      function App() {
+        return (
+          <div id="app">
+            <Watch />
+            <Features />
+            <ProductDetails />
+            <button>ADD TO CART</button>
+            <p className="delivery-message">2-3 business days delivery</p>
+          </div>
+        );
+      }
+
+      // Initialize React application by rendering the App component into the root element
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(<App />);
+    </script>
+  </body>
+</html>
